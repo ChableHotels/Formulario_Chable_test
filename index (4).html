@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+ <html lang="es">
+ <head>
+   <meta charset="UTF-8">
+   <title>Encuesta Pre-Estancia</title>
+   <style>
+     @font-face {
+         font-family: 'ClashDisplay-Regular';
+         src: url('fonts/ClashDisplay-Regular.woff2') format('woff2'),
+             url('fonts/ClashDisplay-Regular.woff') format('woff'),
+             url('fonts/ClashDisplay-Regular.ttf') format('truetype');
+         font-weight: 400;
+         font-display: swap;
+         font-style: normal;
+     }
+ 
+     @font-face {
+         font-family: 'ClashDisplay-Medium';
+         src: url('fonts/ClashDisplay-Medium.woff2') format('woff2'),
+             url('fonts/ClashDisplay-Medium.woff') format('woff'),
+             url('fonts/ClashDisplay-Medium.ttf') format('truetype');
+         font-weight: 500;
+         font-display: swap;
+         font-style: normal;
+     }
+ 
+     @font-face {
+         font-family: 'ClashDisplay-Semibold';
+         src: url('fonts/ClashDisplay-Semibold.woff2') format('woff2'),
+             url('fonts/ClashDisplay-Semibold.woff') format('woff'),
+             url('fonts/ClashDisplay-Semibold.ttf') format('truetype');
+         font-weight: 600;
+         font-display: swap;
+         font-style: normal;
+     }
+ 
+     body {
+         background-color: #F2EDDE;
+ 
+         display: flex;
+         justify-content: center;
+         padding: 40px 0px;
+     }
+     form {
+       background-color: #F2EDDE;
+       padding: 90px 40px 40px 40px;
+       border-radius: 6px;
+       width: 100%;
+       max-width: 600px;
+       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+       box-sizing: border-box;
+       position: relative;
+     }
+     h1 {
+       text-transform: uppercase;
+       font-family: 'ClashDisplay-Semibold', sans-serif;
+       font-size: 18px;
+       letter-spacing: 1px;
+       color: #1E1E1E;
+       text-align: center;
+       margin-bottom: 12%;
+     }
+     label {
+       font-size: 15px;
+       font-family: 'ClashDisplay-Semibold', sans-serif;
+       font-weight: 400;
+       text-transform: uppercase;
+       letter-spacing: 3.8px;
+       margin-top: 15px;
+       display: block;
+       color: rgba(112, 109, 107, 0.70);
+       position: relative;
+       bottom: -0.5%;
+       background-color: #F2EDDE;
+       width: fit-content;
+       left: 2%;
+       padding: 0 1.5%;
+     }
+     input, select, textarea {
+       width: -webkit-fill-available;
+       border: 1px solid #ccc;
+       background: transparent;
+       padding: 12px;
+       font-size: 14px;
+       font-weight: 500;
+       color: #706D6BB2;
+       border-radius: 0px;
+     }
+     input:focus, select:focus, textarea:focus {
+       outline: none;
+       border-bottom-color: #a67c52;
+     }
+     .checkbox-group label,
+     .radio-group label {
+       font-size: 13px;
+       display: block;
+       margin-top: 8px;
+       text-transform: none;
+       font-family: 'ClashDisplay-Medium', sans-serif;
+       font-weight: 300;
+     }
+     textarea {
+       resize: vertical;
+     }
+     button {
+       width: 40%;
+       padding: 15px;
+       background-color: #97938D;
+       color: white;
+       border: none;
+       font-size: 12px;
+       text-transform: uppercase;
+       margin-top: 20px;
+       cursor: pointer;
+       transition: background 0.3s ease;
+     }
+     button:hover {
+       background-color: #916846;
+     }
+     .hidden {
+       display: none;
+     }
+     .navReservaForm {
+       background-color: #706D6BB2;
+       width: 100%;
+       padding: 2% 0%;
+       position: absolute;
+       top: 0;
+       left: 0;
+     }
+     .navReservaForm img {
+       width: 25%;
+       max-width: 242px;
+       margin-left: 5%;
+     }
+     .groupCheckBox {
+       display: flex !important;
+       flex-direction: row-reverse !important;
+       width: 75%;
+       justify-content: space-between !important;
+       align-items: center !important;
+       letter-spacing: 2.8px;
+     }
+     .groupCheckBox input {
+       width: 15%;
+     }
+     .mb3 {
+       margin-bottom: 3%;
+     }
+     .mb5 {
+       margin-bottom: 5%;
+     }
+ 
+     .grupoAcompanante {
+       margin-bottom: 20px;
+     }
+     .grupoAcompanante label {
+       display: block;
+       margin-bottom: 8px;
+       font-size: 14px;
+       color: #706D6BB2;
+       letter-spacing: 2px;
+       font-family: 'ClashDisplay-Medium', sans-serif;
+     }
+     .grupoAcompanante .campos {
+       display: flex;
+     }
+     .grupoAcompanante input[type="text"] {
+       flex: 2;
+     }
+     .grupoAcompanante input[type="number"] {
+       flex: 1;
+     }
+     .bottomLabel{
+         margin-bottom: -2%!important;
+     }
+     .edadSize{
+         margin-top : -1.5%;
+     }
+     .nameSize{
+         width: auto;
+     }
+     input::placeholder{
+         color: #ADABAA66;
+     }
+ 
+     @media (max-width:762px) {
+         form {
+             background-color: #F2EDDE;
+             padding: 90px 20px 40px 20px;
+             border-radius: 0;
+             width: 100%;
+             max-width: 100%;
+             box-shadow: none;
+             position: initial;
+         }
+         h1{
+             font-size: 16px;
+         }
+     }
+     @media (max-width:500px) {
+         h1{
+             font-size: 15px;
+         }
+         .navReservaForm{
+             padding: 3% 0%;
+         }
+         form{
+             padding: 70px 40px 40px 10px;
+         }
+         .groupCheckBox{
+             width: 100%;
+         }
+         .checkbox-group label, .radio-group label {
+             font-size: 12px;
+             letter-spacing: 1.8px;
+         }
+         label{
+             font-size: 13px;
+             letter-spacing: 2.8px;
+         }
+         .navReservaForm img{
+             width: 30%;
+         }
+         .grupoAcompanante .campos {
+             flex-direction: column;
+         }
+         .edadSize {
+             margin-top: 0%;
+             width: fit-content;
+         }
+     }
+   </style>
+ </head>
+ <body>
+   <form id="reservaForm" action="https://hook.us2.make.com/cc3k2njndw4p0h1vqeqkicc6ne8mmje8" method="POST">
+     <div class="navReservaForm">
+       <img src="https://chablehotels.github.io/Formulario_Chable/logoChableForm.png" alt="">
+     </div>
+     <h1>Estamos preparando cada detalle<br>para que vivas una experiencia inigualable</h1>
+ 
+     <label for="idReserva">ID Reserva:</label>
+     <input class="mb3" type="text" id="idReserva" name="idReserva" required>
+ 
+     <label for="nombre">Nombre:</label>
+     <input class="mb3" type="text" id="nombre" name="nombre" required>
+ 
+     <label for="email">E-mail:</label>
+     <input class="mb3" type="email" id="email" name="email" required>
+ 
+     <label class="groupCheckBox mb3">
+       <input type="checkbox" id="checkAcomp" onclick="document.getElementById('grupoAcomp').classList.toggle('hidden', !this.checked)">
+       ¿Viajas con acompañantes?
+     </label>
+ 
+     <div id="grupoAcomp" class="hidden">
+       <label class="bottomLabel" for="cuantosAcomp">¿Cuántos?</label>
+       <input type="number" id="cuantosAcomp" name="cuantosAcomp" min="1" max="10">
+       <div id="acompanantesContainer"></div>
+     </div>
+ 
+     <input type="hidden" id="detallesAcompanantes" name="detallesAcompanantes">
+ 
+     <label for="horaLlegada">Horario estimado de llegada</label>
+     <div style="display: flex;" class="mb3">
+       <input type="number" min="1" max="12" name="horaLlegada" placeholder="Ej. 10">
+       <select name="ampmLlegada">
+         <option value="AM">AM</option>
+         <option value="PM">PM</option>
+       </select>
+     </div>
+ 
+     <label class="groupCheckBox mb3">
+       <input type="checkbox" id="checkMascota" name="viajaConMascota" value="sí">
+       ¿Viajas con tu mascota?
+     </label>
+     <div id="infoMascota" class="hidden">
+       <label class="bottomLabel" for="detallesMascota">Nombre, peso y raza:</label>
+       <textarea id="detallesMascota" name="detallesMascota" rows="2"></textarea>
+     </div>
+ 
+     <label class="mb5">Motivo del viaje</label>
+     <div class="checkbox-group mb3">
+       <label class="groupCheckBox mb3"><input type="checkbox" name="motivoViaje" value="Ocasión especial"> Ocasión especial</label>
+       <label class="groupCheckBox mb3"><input type="checkbox" name="motivoViaje" value="Vacaciones"> Vacaciones</label>
+       <label class="groupCheckBox mb5"><input type="checkbox" name="motivoViaje" value="Bienestar"> Bienestar</label>
+     </div>
+ 
+     <label for="origenVisita">Lugar de procedencia</label>
+     <input type="text" id="origenVisita" name="origenVisita" placeholder="Ciudad / País">
+ 
+     <label class="mb5">Restricciones alimenticias</label>
+     <div class="checkbox-group mb3">
+       <label class="groupCheckBox mb3"><input type="checkbox" name="restriccionAlimenticia" value="No consumen gluten"> No consumen gluten</label>
+       <label class="groupCheckBox mb3"><input type="checkbox" name="restriccionAlimenticia" value="No consumen alcohol"> No consumen alcohol</label>
+       <label class="groupCheckBox mb3"><input type="checkbox" name="restriccionAlimenticia" value="Vegano"> Vegano</label>
+       <label class="groupCheckBox mb3"><input type="checkbox" name="restriccionAlimenticia" value="Vegetariano"> Vegetariano</label>
+       <label class="groupCheckBox mb3"><input type="checkbox" id="checkAlergia" name="restriccionAlimenticia" value="Alergia alimenticia"> Intolerancia o alergia</label>
+     </div>
+     <div id="infoAlergia" class="hidden">
+       <label class="bottomLabel" for="detallesAlergia">¿Otras alergias alimenticias?</label>
+       <textarea id="detallesAlergia" name="detallesAlergia" rows="2"></textarea>
+     </div>
+ 
+     <label for="bebidasPlatillos">Alimentos y bebidas preferidos</label>
+     <textarea id="bebidasPlatillos" name="bebidasPlatillos"></textarea>
+ 
+     <label for="preferenciaCafe">¿Cómo tomas tu café?</label>
+     <textarea id="preferenciaCafe" name="preferenciaCafe"></textarea>
+ 
+     <label for="hobbiesFavoritos">¿Hobbies?</label>
+     <textarea id="hobbiesFavoritos" name="hobbiesFavoritos"></textarea>
+ 
+     <label for="solicitudEspecial">Solicitudes especiales</label>
+     <textarea id="solicitudEspecial" name="solicitudEspecial"></textarea>
+ 
+     <label for="comentarios">Comentarios adicionales</label>
+     <textarea id="comentarios" name="comentarios" rows="2"></textarea>
+ 
+     <button type="submit">Enviar</button>
+   </form>
+ 
+   <script>
+     const params = new URLSearchParams(window.location.search);
+     ['idReserva', 'nombre', 'email'].forEach(param => {
+       const value = params.get(param);
+       if (value) document.getElementById(param).value = value;
+     });
+ 
+     document.getElementById('checkMascota').addEventListener('change', e => {
+       document.getElementById('infoMascota').classList.toggle('hidden', !e.target.checked);
+     });
+     document.getElementById('checkAlergia').addEventListener('change', e => {
+       document.getElementById('infoAlergia').classList.toggle('hidden', !e.target.checked);
+     });
+ 
+     document.getElementById('cuantosAcomp').addEventListener('input', function () {
+       const container = document.getElementById('acompanantesContainer');
+       container.innerHTML = '';
+       const cantidad = parseInt(this.value) || 0;
+       for (let i = 1; i <= cantidad; i++) {
+         const grupo = document.createElement('div');
+         grupo.className = 'grupoAcompanante';
+ 
+         const label = document.createElement('label');
+         label.className = 'bottomLabel';
+ 
+         const campos = document.createElement('div');
+         campos.className = 'campos';
+ 
+         const nombreInput = document.createElement('input');
+         nombreInput.type = 'text';
+         nombreInput.name = `acompananteNombre${i}`;
+         nombreInput.className = 'nameSize'
+         nombreInput.placeholder = 'Ej. Juan Pérez';
+ 
+         const nombreGroup = document.createElement('div');
+         nombreGroup.style.display = 'flex';
+         nombreGroup.style.flexDirection = 'column';
+         nombreGroup.style.flex = '2';
+ 
+         const nombreLabel = document.createElement('label');
+         nombreLabel.className = 'bottomLabel';
+         nombreLabel.textContent = 'NOMBRE DEL ACOMPAÑANTE';
+ 
+         nombreGroup.appendChild(nombreLabel);
+         nombreGroup.appendChild(nombreInput);
+ 
+         const edadGroup = document.createElement('div');
+         edadGroup.style.display = 'flex';
+         edadGroup.style.flexDirection = 'column';
+         edadGroup.style.flex = '1';
+ 
+         const edadLabel = document.createElement('label');
+         edadLabel.className = 'bottomLabel';
+         edadLabel.textContent = 'EDAD';
+ 
+         const edadInput = document.createElement('input');
+         edadInput.type = 'number';
+         edadInput.name = `acompananteEdad${i}`;
+         edadInput.className = 'edadSize';
+         edadInput.placeholder = 'Ej. 30';
+ 
+         edadGroup.appendChild(edadLabel);
+         edadGroup.appendChild(edadInput);
+ 
+         campos.appendChild(nombreGroup);
+         campos.appendChild(edadGroup);
+         grupo.appendChild(label);
+         grupo.appendChild(campos);
+         container.appendChild(grupo);
+ 
+         nombreInput.addEventListener('input', updateAcompanantes);
+         edadInput.addEventListener('input', updateAcompanantes);
+       }
+       updateAcompanantes();
+     });
+ 
+     function updateAcompanantes() {
+       const cantidad = parseInt(document.getElementById('cuantosAcomp').value) || 0;
+       let detalles = '';
+       for (let i = 1; i <= cantidad; i++) {
+         const nombreInput = document.getElementsByName(`acompananteNombre${i}`)[0];
+         const edadInput = document.getElementsByName(`acompananteEdad${i}`)[0];
+         const nombre = nombreInput ? nombreInput.value.trim() : '';
+         const edad = edadInput ? edadInput.value.trim() : '';
+         if (nombre || edad) {
+           detalles += `Acompañante ${i}: ${nombre} - ${edad}; `;
+         }
+       }
+       document.getElementById('detallesAcompanantes').value = detalles.trim();
+     }
+ 
+     document.getElementById('reservaForm').addEventListener('submit', function(e) {
+       e.preventDefault();
+       const formData = new FormData(this);
+       fetch(this.action, {
+         method: 'POST',
+         body: formData
+       })
+       .then(response => {
+         if (response.ok) {
+           document.getElementById('reservaForm').innerHTML = '<div class="navReservaForm"><img src="https://chablehotels.github.io/Formulario_Chable/logoChableForm.png" alt=""></div><h2 style="color: rgba(112, 109, 107, 0.70); text-align:center;">¡Gracias por completar el formulario!</h2><p style="text-align:center;">Hemos recibido su información y nos pondremos en contacto.</p>';
+         } else {
+           alert('Hubo un problema. Por favor intente de nuevo.');
+         }
+       })
+       .catch(error => {
+         console.error('Error:', error);
+         alert('Error en el envío. Por favor intente de nuevo.');
+       });
+     });
+   </script>
+ </body>
+ </html>
